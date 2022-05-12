@@ -15,11 +15,6 @@ public class Game {
     var player : [Player] = [Player(name: ""),
                              Player(name: "")]
     
-   
-    // ASK PLAYER NICKNAME FOR CHARACTERS
-    
- 
-    
     
     //Allow playrs to choos a name !! must be different 1 to 2
     public func askPlayersName() {

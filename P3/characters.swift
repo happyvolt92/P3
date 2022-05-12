@@ -54,8 +54,8 @@ class Character {
         // Heal -----Note for later: can't heal above Maxlife limit-----
         func heal(character : Character){
             character.life = character.life +  100
-            print("\(self.name) trow a healing spell on \(character.name) and give back 100 HP.")
-            print("\(character.name) a maintenant \(character.life) points de vie.\n")
+            print("\(CharacterType.mage) trow a healing spell on \(character.name) and give him back 100 HP.")
+            print("\(character.name) has now \(character.life) HP. \n")
         }
 
         
