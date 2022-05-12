@@ -16,15 +16,13 @@ public class Game {
                              Player(name: "")]
     
    
-    var characters : [Character] = [
-        // TODO : ASK PLAYER TO GIVE NICK NAME TO HE CHARACTERS 8!!
-                                    Character(name: "King's soldier", life: 300, weapon: Sword()),
-                                    Character(name: "Colossus", life: 500, weapon: IronFist()),
-                                    Character(name: "Dwarf", life: 180, weapon: Hammer()),
-                                    Character(name: "Magus", life: 100, weapon: Staff())]
+    // ASK PLAYER NICKNAME FOR CHARACTERS
+    
+ 
+    
     
     //Allow playrs to choos a name !! must be different 1 to 2
-    public func PlayerNames() {
+    public func askPlayersName() {
         print("Player 1, what's your name ?")
         let name1 = readLine()
         self.player[0] = Player(name: name1!)
@@ -32,11 +30,32 @@ public class Game {
         let name2 = readLine()
         self.player[1] = Player(name: name2!)
         print("\n\n")
+        //create a func for name verif
+        if name2 == name1 {
+            print("Oup's name already taken !")
+            print("Player 2, what's your name ?")
+            let name2 = readLine()
+            self.player[1] = Player(name: name2!)
+            print("\n\n")
+        }
+        else {
+            print(" ok Fighters, let's go ! \n\n")
+        }
     }
-                                    
+    
+    /*  func isNameUnique(name: String) -> Bool {
+            if name == Warrior.name || name == Mage.name || name == Colossus.name || name == Dwarf.name {
+                return false
+            } else {
+                return true
+            }
+     */
+    
+    //
+    
+    
+    
 }
-
-
 
 
 
