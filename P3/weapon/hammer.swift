@@ -9,7 +9,7 @@ import Foundation
 
 class Hammer : Weapon {
     init() {
-        super.init(damage: 80)
+        super.init(damage: 200)
         name = "Isobel"
     }
 }

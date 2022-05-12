@@ -62,7 +62,6 @@
 				DF52D228282D0E9D00A56D77 /* IronFist.swift */,
 				DF52D22C282D0F0C00A56D77 /* staff.swift */,
 				DF52D22E282D0F6000A56D77 /* hammer.swift */,
-				DF52D230282D102200A56D77 /* main.swift */,
 			);
 			path = weapon;
 			sourceTree = "<group>";
@@ -87,9 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				DF52D225282D0E6A00A56D77 /* weapon */,
-				DFDFC30328083BBB006D3976 /* characters.swift */,
 				DFDFC30528083BBB006D3976 /* player.swift */,
 				DF33AB7D28083BDE00781B6B /* game.swift */,
+				DF52D230282D102200A56D77 /* main.swift */,
+				DFDFC30328083BBB006D3976 /* characters.swift */,
 			);
 			path = P3;
 			sourceTree = "<group>";
