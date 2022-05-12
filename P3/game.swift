@@ -8,6 +8,20 @@
 import Foundation
 
 
+
+
+
+
+
+
+
+
+
+
+
+/*  OLD GAME KAPOUT
+ 
+
 // Game class with properties: intro, players, teams, checkWinner, startGame, endGame
 class Game { 
 
@@ -26,31 +40,31 @@ class Game {
         self.startGame = startGame()
         self.endGame = endGame()
    
-        // small intro to the game
-        func intro() -> String {
-            return "Welcome to War is love! Two players will fight for their life. Each player will create a team composed of 3 characters. Every player, Team and warrior need a name! It's a turn by turn game, each player will choose a character to attack the other player's character. The winner is the last player with a character alive. Good luck!"
-        }
-        
-        
-        func endGame() -> Bool{
-               if (self.players[0].character[0].life == 0 && self.players[0].character[1].life == 0 && self.players[0].character[2].life == 0) || (self.players[1].character[0].life == 0 && self.players[1].character[1].life == 0 && self.players[1].character[2].life == 0) {
-                   return false
-               }else{
-                   return true
-               }
-           }
-        
-        func checkWinner() -> Player {
-            if (self.players[0].character[0].life == 0 && self.players[0].character[1].life == 0 && self.player[0].character[2].life == 0) {
-                return self.player[1]
-            }else{
-                return self.player[0]
-            }
-        }
+ 
         
     }
-    
    
+    // small intro to the game
+    func intro() -> String {
+        return "Welcome to War is love! Two players will fight for their life. Each player will create a team composed of 3 characters. Every player, Team and warrior need a name! It's a turn by turn game, each player will choose a character to attack the other player's character. The winner is the last player with a character alive. Good luck!"
+    }
+    
+    
+    func endGame() -> Bool{
+           if (self.players[0].character[0].life == 0 && self.players[0].character[1].life == 0 && self.players[0].character[2].life == 0) || (self.players[1].character[0].life == 0 && self.players[1].character[1].life == 0 && self.players[1].character[2].life == 0) {
+               return false
+           }else{
+               return true
+           }
+       }
+    
+    func checkWinner() -> Player {
+        if (self.players[0].character[0].life == 0 && self.players[0].character[1].life == 0 && self.player[0].character[2].life == 0) {
+            return self.player[1]
+        }else{
+            return self.player[0]
+        }
+    }
      
     
 
@@ -110,3 +124,4 @@ class Game {
         PickCharater()
     }
 }
+*/
