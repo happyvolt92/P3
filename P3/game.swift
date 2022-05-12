@@ -8,9 +8,33 @@
 import Foundation
 
 
-
-
-
+public class Game {
+    
+    // change method, increase laps'turn. says it in the function GameIntro
+    var Laps = 0
+    var player : [Player] = [Player(name: ""),
+                             Player(name: "")]
+    
+   
+    var characters : [Character] = [
+        // TODO : ASK PLAYER TO GIVE NICK NAME TO HE CHARACTERS 8!!
+                                    Character(name: "King's soldier", life: 300, weapon: Sword()),
+                                    Character(name: "Colossus", life: 500, weapon: IronFist()),
+                                    Character(name: "Dwarf", life: 180, weapon: Hammer()),
+                                    Character(name: "Magus", life: 100, weapon: Staff())]
+    
+    //Allow playrs to choos a name !! must be different 1 to 2
+    public func PlayerNames() {
+        print("Player 1, what's your name ?")
+        let name1 = readLine()
+        self.player[0] = Player(name: name1!)
+        print("Player 2, what's your name ?")
+        let name2 = readLine()
+        self.player[1] = Player(name: name2!)
+        print("\n\n")
+    }
+                                    
+}
 
 
 
