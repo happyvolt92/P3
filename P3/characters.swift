@@ -14,12 +14,6 @@ class Character {
             self.type = type
         }
     
-        func attack(character: Character){
-            character.life = character.life - self.weapon.damage
-            print("\(self.name) damaged \(character.name)by \(self.weapon.damage) !")
-       
-        }
-    
         // so nothing else can be choose
         enum CharacterType: String {
                 case warrior = "Warrior"
@@ -45,10 +39,27 @@ class Character {
                     case .dwarf: return Hammer()
                 }
             }
+        }//end enum
+        
+        // Fight
+        func attack(character: Character){
+            character.life = character.life - self.weapon.damage
+            print("\(self.name) damaged \(character.name)by \(self.weapon.damage) !")
+            if character.life < 0 {
+                character.life = 0
+            }
+            print("\(character.name)has now \(character.life) HP\n")
         }
-           
-    
-    
+        
+        // Heal -----Note for later: can't heal above Maxlife limit-----
+        func heal(character : Character){
+            character.life = character.life +  100
+            print("\(self.name) trow a healing spell on \(character.name) and give back 100 HP.")
+            print("\(character.name) a maintenant \(character.life) points de vie.\n")
+        }
+
+        
+       
 }
 
  
