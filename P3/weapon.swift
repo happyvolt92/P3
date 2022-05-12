@@ -8,21 +8,21 @@
 import Foundation
 
 class Weapon {
-    var weaponName: String
-    var damage: Int
 
+    let weaponName: String
+    let damage: Int
+
+    let sword = Weapon(weaponName: String, damage: 30),
+    let staff = Weapon(weaponName: String, name: "staff", damage: 10, heal: 40),
+    let axe = Weapon(weaponName: String, damage: 50),
+    let ironFist = Weapon(weaponName: String, damage: 20)
     
     
     init(weaponName: String, damage: Int) {
         self.weaponName = weaponName
         self.damage = damage
-       
         
     }
     
-    var sword = Weapon(weaponName: "sword", damage: 30)
-    var staff = Weapon(weaponName: "staff", damage: 10)
-    var axe = Weapon(weaponName: "axe", damage: 50)
-    var ironFist = Weapon(weaponName: "iron fist", damage: 20)
-}
 
+}
