@@ -62,7 +62,7 @@ class Player{
     }
     
     // Ask player to choose a target
-    func chooseTheTarget() -> Character {
+    public func chooseTheTarget() -> Character {
         var i : Int
         repeat {
             print("How fun ! Choose the enemy !!")
@@ -84,4 +84,6 @@ class Player{
         return self.character[i-1]
     }
     
+    
+        
 }
