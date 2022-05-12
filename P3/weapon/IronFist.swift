@@ -7,7 +7,7 @@
 
 import Foundation
 
- class Fist : Weapon {
+ class IronFist : Weapon {
     init() {
         super.init(damage: 20)
         name = "Iron Fists"
