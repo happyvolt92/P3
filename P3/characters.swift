@@ -58,7 +58,7 @@ class Character {
             print("\(character.name) has now \(character.life) HP. \n")
         }
 
-        
+          
        
 }
 
