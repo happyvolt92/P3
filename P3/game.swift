@@ -16,7 +16,6 @@ public class Game {
                              Player(name: "")]
     var characters = [Character]()
     
-    
     //Allow playrs to choos a name !! must be different 1 to 2
     public func askPlayersName() {
         print("Player 1, what's your name ?")
@@ -46,23 +45,19 @@ public class Game {
         }
     }
     
-    /// Function to display all available characters
-    public func showCharactersList(){
-        for i in 0 ... characters.count-1 {
-            print("\(i+1).\(characters[i].name) has \(characters[i].weapon.damage) damage pts and got \(characters[i].life) HP, he is carrying \(characters[i].weapon.name).")
-        }
-    }
-    
-    
         // Create Team
     public func CreatePlayerTeam(){
         var i = 0
+        
         var choice : Int
         repeat {
             let x = i%2
             repeat {
-                print("Funniest Part! Creation of your legendary cannon fodder hem .. Team. \(self.player[x].name)\n")
-                self.showCharactersList()
+                print("Funniest Part! Creation of your legendary cannon fodder hem .. Team. \(self.player[x].name)\n, it's your turn ! Choose 3 fighters.\n\n")
+                for  in characters {
+                   print(characters)
+                }
+                
                 choice = input()
                 if (choice > self.characters.count) || (choice < 1) {
                     print("No time for this, don't be shy and choose !")
@@ -75,19 +70,7 @@ public class Game {
         print("\n")
     }
    
-    
-    // list of all warriors, their HP and damage. NOTE FOR LATER USE FOR each characters in Players team
-    public func listingAllCharacters(){
-        print(" \(self.player[0].name) choose\n")
-        print("Warrior1: \(self.player[0].character[0].name)\t \(self.player[0].character[0].life)\t \(self.player[0].character[0].weapon.name)\t\(self.player[0].character[0].weapon.damage)")
-        print("Warrior2: \(self.player[0].character[1].name)\t \(self.player[0].character[1].life)\t \(self.player[0].character[1].weapon.name)\t : \(self.player[0].character[1].weapon.damage)")
-        print("Warrior3: \(self.player[0].character[2].name)\t  \(self.player[0].character[2].life)\t \(self.player[0].character[2].weapon.name)\t \(self.player[0].character[2].weapon.damage)\n")
-        print("\(self.player[1].name) choose\n")
-        print("Warrior1: \(self.player[1].character[0].name)\t  \(self.player[1].character[0].life)\t \(self.player[1].character[0].weapon.name)\t \(self.player[1].character[0].weapon.damage)")
-        print("Warrior2: \(self.player[1].character[1].name)\t  \(self.player[1].character[1].life)\t \(self.player[1].character[1].weapon.name)\t \(self.player[1].character[1].weapon.damage)")
-        print("Warrior3: \(self.player[1].character[2].name)\t  \(self.player[1].character[2].life)\t \(self.player[1].character[2].weapon.name)\t \(self.player[1].character[2].weapon.damage)\n")
-        
-    }
+   
     
     // Function stop the game if one player got all his warrior dead
     public func endGame() -> Bool{
@@ -109,13 +92,12 @@ public class Game {
     
     
     /// Function to launch the game
-    static func launchGame() {
+     func launchGame() {
         
         let game = Game()
         
         game.askPlayersName()
-        game.CreatePlayerTeam()
-        game.listingAllCharacters()
+         game.CreatePlayerTeam()
     
         print("\n\n\n LET'S FIGHT !\n\n\n")
         var i = 0
@@ -132,7 +114,6 @@ public class Game {
             game.Laps = game.Laps + 1
         } while game.endGame()
         
-        game.listingAllCharacters()
         
         print("This is the END, my only friend, THE END. AHEM, the winner is ... \(game.checkWinner().name) she/he won in \(game.Laps) laps. Congrats, Now go back to your business.")
     }

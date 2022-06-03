@@ -5,14 +5,12 @@
 //  Created by Elodie GAGE on 14/04/2022.
 //
 
-class Player{
+public class Player{
     var name: String
     var character = [Character]()
     
     init(name:String){
     self.name = name
-   
-        
     }
     
    // Int convert
@@ -62,7 +60,7 @@ class Player{
     }
     
     // Ask player to choose a target
-    public func chooseTheTarget() -> Character {
+   func chooseTheTarget() -> Character {
         var i : Int
         repeat {
             print("How fun ! Choose the enemy !!")

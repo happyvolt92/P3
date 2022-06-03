@@ -13,8 +13,8 @@ import Foundation
     func StartGame() {
        
        let game = Game()
-       
-       game.askPlayersName()
+   
+       game.launchGame()
     
    // I still want to turn it into a function
        print("Welcome to War is love! Two players will fight for their life. Each player will create a team composed of 3 characters. Every player,warrior need a name! It's a turn by turn game, each player will choose a character to attack the other player's character. The winner is the last player with a character alive. Good luck!")
@@ -25,3 +25,4 @@ import Foundation
 
     
     StartGame()
+   
