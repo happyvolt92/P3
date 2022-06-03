@@ -45,6 +45,15 @@ public class Game {
         }
     }
     
+    // count characters occurence and print their info !!
+    func listingAllCharacters(){
+        for c in 0...characters.count {
+            print("\(c+1). \(characters)")
+            print("\(c+1). \(characters)")
+            
+        }
+    }
+    
         // Create Team
     public func CreatePlayerTeam(){
         var i = 0
@@ -54,10 +63,7 @@ public class Game {
             let x = i%2
             repeat {
                 print("Funniest Part! Creation of your legendary cannon fodder hem .. Team. \(self.player[x].name)\n, it's your turn ! Choose 3 fighters.\n\n")
-                for  in characters {
-                   print(characters)
-                }
-                
+                listingAllCharacters()
                 choice = input()
                 if (choice > self.characters.count) || (choice < 1) {
                     print("No time for this, don't be shy and choose !")
