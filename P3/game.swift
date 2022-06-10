@@ -67,10 +67,9 @@ public class Game {
     
     // listing characters using CaseIterable and enum. code cleaner and maintanable
     func listingAllCharacters(){
-        var choice : Int
         
         for _ in Character.CharacterType.allCases{
-            print(  "\(player.characters.append(Character.init(type:Character.CharacterType.allCases[choice - 1])))")
+            print(  " \(Character.CharacterType.allCases.description) ")
         }
     }
     
