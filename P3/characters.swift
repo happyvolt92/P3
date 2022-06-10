@@ -14,8 +14,8 @@ class Character {
             self.type = type
         }
     
-        // so nothing else can be choose
-        enum CharacterType: String {
+        // so nothing else can be choose, caseIterable for simplify choice
+        enum CharacterType: String, CaseIterable{
                 case warrior = "Warrior"
                 case mage = "Mage"
                 case colossus = "Colossus"
