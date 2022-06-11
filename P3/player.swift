@@ -7,10 +7,12 @@
 
 public class Player{
     var name: String
-    var character = [Character]()
+    //initiate the characters allCases
+ var characterPlayersChooseArray: [Character] = []
     
     init(name:String){
     self.name = name
+        
     }
     
    // Int convert
@@ -35,28 +37,29 @@ public class Player{
         return i
     }
     
-    // ask wich character will do it
+    // ask wich character will do it; X= list Player.characters 
     func askWichCharacterWillDoTheAction() -> Character {
         var i : Int
+        i = input()
         repeat {
             print("\(self.name) Who will do the action ?")
             for i in 0...2 {
-                if self.character[i].life > 0 {
-                    print("\(i+1).\(self.character[i].name)")
+                if self.characterPlayersChooseArray[i].life() > 0 {
+                    print("\(i+1).\(characterPlayersChooseArray[i].rawValue)")
                 }
             }
-            i = input()
-            
+            // Player's choice need to be between 1&3 only
             if i <= 3 && i >= 1 {
-                if self.character[i-1].life <= 0 {
+                if self.characterPlayersChooseArray[i-1].life() <= 0 {
                     print("Hm,Fighter dead. Ask someone else.")
                     i = 0
                 }
+                //si
             } else {
                 print("You can't escape your duty, choose someone !")
             }
         } while i < 1 || i > 3
-        return self.character[i-1]
+        return self.characterTypeArray[i-1]
     }
     
     // Ask player to choose a target
@@ -80,8 +83,5 @@ public class Player{
             }
         } while i < 1 || i > 3
         return self.character[i-1]
+        }
     }
-    
-    
-        
-}
