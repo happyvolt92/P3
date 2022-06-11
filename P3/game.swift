@@ -11,18 +11,17 @@ import Foundation
 public class Game {
     
     var Laps = 0
-    var player : [Player] = [Player(name: ""),
-                             Player(name: "")]
+    var playersArray : [Player] = [Player]()
     
     
     //Allow playrs to choos a name !! must be different 2 to 1
     public func askPlayersName() {
         print("Player 1, what's your name ?")
         let name1 = readLine()
-        self.player[0] = Player(name: name1!)
+        self.playersArray[0] = Player(name: name1!)
         print("Player 2, what's your name ?")
         let name2 = readLine()
-        self.player[1] = Player(name: name2!)
+        self.playersArray[1] = Player(name: name2!)
         print("\n\n")
         //create a func for name verif
         if name2 == name1 {
@@ -44,25 +43,33 @@ public class Game {
         }
     }
 
-        // Create Team
-    public func CreatePlayerTeam(){
-        var i = 0
+
+    public func TeamPlayerCreation() {
         
-        var choice : Int
-        repeat {
-            let x = i%2
+        for player in playersArray {
+            var i = 0
+            var choice : Int
+            
             repeat {
-                print("Funniest Part! Creation of your legendary cannon fodder hem .. Team.\n \(self.player[x].name), it's your turn ! Choose 3 fighters.\n\n")
+                print("Funniest Part! Creation of your legendary cannon fodder hem .. Team.\n \(player.name), it's your turn ! Choose 3 fighters.\n\n")
                 listingAllCharacters()
                 choice = input()
-                // if the choice aka the number chosen by the player is under 1, print a warning
+                
+                // choice need to be in the characterArray, warning in terminal
                 if (choice > Character.CharacterType.allCases.count) || (choice < 1) {
                     print("No time for this, don't be shy and choose !")
                 }
-            } while (choice > Character.CharacterType.allCases.count) || (choice < 1)
-            i = i + 1
-        } while i < 6
-        print("\n")
+                else {
+                    // function to do: ask Player's characters name
+                    var charactersPlayersChoice: Character = Character(name: "Jose", type: Character.CharacterType.allCases[choice])
+                    // put characters choice in an array
+                    player.characterPlayersChooseArray.append(charactersPlayersChoice)
+                    //i = i + 1   =   i += 1
+                    i += 1
+                }
+           
+            }while i < 3
+        }
     }
     
     // listing characters using CaseIterable and enum. code cleaner and maintanable
@@ -75,38 +82,42 @@ public class Game {
     
     // Function stop the game if one player got all his warrior dead: life =0.
     public func endGame() -> Bool{
-        if (self.player[0].character[0].life == 0 && self.player[0].character[1].life == 0 && self.player[0].character[2].life == 0) || (self.player[1].character[0].life == 0 && self.player[1].character[1].life == 0 && self.player[1].character[2].life == 0) {
+        if (Player.self[0].character[0].life == 0 && self.player[0].character[1].life == 0 && self.player[0].character[2].life == 0) || (self.player[1].character[0].life == 0 && self.player[1].character[1].life == 0 && self.player[1].character[2].life == 0) {
             return false
         }else{
             return true
         }
     }
     
+    public func enOfTheGame() -> Bool{
+        if (playersArray == 0
+    }
+    
     // function to check who won by reading character's players life.
     func checkWinner() -> Player {
         if (self.player[0].character[0].life == 0 && self.player[0].character[1].life == 0 && self.player[0].character[2].life == 0) {
-            return self.player[1]
+            return self.playersArray[1]
         }else{
-            return self.player[0]
+            return self.playersArray[0]
         }
     }
     
     // function to launch game within all steps (actions).
      func launchGame() {
         self.askPlayersName()
-        self.CreatePlayerTeam()
+        self.TeamPlayerCreation()
     
         print("\n\n\n LET'S FIGHT !\n\n\n")
         var i = 0
         repeat {
             let x = i%2
-            print("Don't sleep, it's your turn \(self.player[x].name)")
+            print("Don't sleep, it's your turn \(self.playersArray[x].name)")
             //every players need to choose an action, a character who will do the action and a target. Every things need to be in a row.
-            if self.player[x].askPlayerWichActionToDo() == 1 {
-               self.player[x].askWichCharacterWillDoTheAction().attack(character: self.player[(x+1)%2].chooseTheTarget())
+            if self.playersArray[x].askPlayerWichActionToDo() == 1 {
+               self.playersArray[x].askWichCharacterWillDoTheAction().attack(character: self.playersArray[(x+1)%2].chooseTheTarget())
             }
             else{
-               self.player[x].askWichCharacterWillDoTheAction().heal(character: self.player[x].chooseTheTarget())
+               self.playersArray[x].askWichCharacterWillDoTheAction().heal(character: self.playersArray[x].chooseTheTarget())
             }
             //laps increase so we can count them every turns
             i = i + 1
