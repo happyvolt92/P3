@@ -9,7 +9,7 @@ class Character {
             self.name = name
             // weapon enum
             self.weapon = type.weapon()
-            //life is now combinate with life
+            //life is now combinate with type
             self.life = type.life()
             self.type = type
         }
@@ -51,7 +51,7 @@ class Character {
             print("\(character.name)has now \(character.life) HP\n")
         }
         
-        // Heal -----Note for later: can't heal above Maxlife limit-----
+        // heal function
         func heal(character : Character){
             character.life = character.life +  100
             print("\(CharacterType.mage) trow a healing spell on \(character.name) and give him back 100 HP.")
