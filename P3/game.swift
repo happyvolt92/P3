@@ -80,22 +80,16 @@ public class Game {
         }
     }
     
-    // Function stop the game if one player got all his warrior dead: life =0.
-    public func endGame() -> Bool{
-        if (Player.self[0].character[0].life == 0 && self.player[0].character[1].life == 0 && self.player[0].character[2].life == 0) || (self.player[1].character[0].life == 0 && self.player[1].character[1].life == 0 && self.player[1].character[2].life == 0) {
-            return false
-        }else{
+    // if a playerchooseArray life is equal to 0 then endgame is true
+    public func enOfTheGame() -> Bool{
+        if (playersArray.count == 0){
             return true
-        }
     }
     
-    public func enOfTheGame() -> Bool{
-        if (playersArray == 0
-    }
     
     // function to check who won by reading character's players life.
     func checkWinner() -> Player {
-        if (self.player[0].character[0].life == 0 && self.player[0].character[1].life == 0 && self.player[0].character[2].life == 0) {
+        if (playersArray[0] == 0) {
             return self.playersArray[1]
         }else{
             return self.playersArray[0]
@@ -122,7 +116,7 @@ public class Game {
             //laps increase so we can count them every turns
             i = i + 1
             self.Laps = self.Laps + 1
-        } while self.endGame()
+        } while self.enOfTheGame()
         
         
         print("This is the END, my only friend, THE END. AHEM, the winner is ... \(self.checkWinner().name) she/he won in \(self.Laps) laps. Congrats, Now go back to your business.")
