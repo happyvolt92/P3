@@ -74,7 +74,6 @@ public class Game {
     
     // listing characters using CaseIterable and enum. code cleaner and maintanable
     func listingAllCharacters(){
-        
         for _ in Character.CharacterType.allCases{
             print(  " \(Character.CharacterType.allCases.description) ")
         }
@@ -88,14 +87,13 @@ public class Game {
     
     
     // function to check who won by reading character's players life.
-    func checkWinner() -> Player {
-        if (playersArray[0] == 0) {
-            return self.playersArray[1]
-        }else{
-            return self.playersArray[0]
+   func checkWinner () {
+        for player in playersArray {
+            if player.characterPlayersChooseArray[0].life == 0 {
+                print("This is the END, my only friend, THE END. AHEM, the winner is ... \(player.name) she/he won in \(self.Laps) laps. Congrats, Now go back to your business.")
+            }
         }
     }
-    
     // function to launch game within all steps (actions).
      func launchGame() {
         self.askPlayersName()
@@ -118,8 +116,7 @@ public class Game {
             self.Laps = self.Laps + 1
         } while self.enOfTheGame()
         
-        
-        print("This is the END, my only friend, THE END. AHEM, the winner is ... \(self.checkWinner().name) she/he won in \(self.Laps) laps. Congrats, Now go back to your business.")
+     
      }
 }
 
