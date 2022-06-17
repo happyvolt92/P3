@@ -1,10 +1,8 @@
-//
 //  Game.swift
-//  
+//
 //
 //  Created by Elodie GAGE on 14/04/2022.
 //
-
 import Foundation
 
 
@@ -18,10 +16,10 @@ public class Game {
     public func askPlayersName() {
         print("Player 1, what's your name ?")
         let name1 = readLine()
-        self.playersArray[0] = Player(name: name1!)
+        self.playersArray.append(Player(name: name1!))
         print("Player 2, what's your name ?")
         let name2 = readLine()
-        self.playersArray[1] = Player(name: name2!)
+        self.playersArray.append(Player(name: name2!))
         print("\n\n")
         //create a func for name verif
         if name2 == name1 {
@@ -60,6 +58,7 @@ public class Game {
                     print("No time for this, don't be shy and choose !")
                 }
                 else {
+                    // TODO CHANGE JOSE !!!
                     // function to do: ask Player's characters name
                     var charactersPlayersChoice: Character = Character(name: "Jose", type: Character.CharacterType.allCases[choice])
                     // put characters choice in an array
@@ -74,28 +73,32 @@ public class Game {
     
     // listing characters using CaseIterable and enum. code cleaner and maintanable
     func listingAllCharacters(){
-        for _ in Character.CharacterType.allCases{
-            print(  " \(Character.CharacterType.allCases.description) ")
+        for characterType in Character.CharacterType.allCases{
+            print(  " \(characterType.rawValue) ")
         }
     }
     
     // if a playerchooseArray life is equal to 0 then endgame is true
     public func enOfTheGame() -> Bool{
-        if (playersArray.count == 0){
-            return true
+        // verifier dans une équipe si tout les characters.life = 0
+        for player in playersArray{
+            if !player.isAlive(){
+                return true
+            }
+        }
+            return false
     }
     
     
     // function to check who won by reading character's players life.
-   func checkWinner () {
-        for player in playersArray {
-            if player.characterPlayersChooseArray[0].life == 0 {
-                print("This is the END, my only friend, THE END. AHEM, the winner is ... \(player.name) she/he won in \(self.Laps) laps. Congrats, Now go back to your business.")
-            }
-        }
-    }
+  
+        
     // function to launch game within all steps (actions).
      func launchGame() {
+         // Game explanation on start
+             print("Welcome to War is love! Two players will fight for their life. Each player will create a team composed of 3 characters. Every player,warrior need a name! It's a turn by turn game, each player will choose a character to attack the other player's character. The winner is the last player with a character alive. Good luck!")
+         
+         
         self.askPlayersName()
         self.TeamPlayerCreation()
     
@@ -114,12 +117,8 @@ public class Game {
             //laps increase so we can count them every turns
             i = i + 1
             self.Laps = self.Laps + 1
-        } while self.enOfTheGame()
+        } while !self.enOfTheGame()
         
      
      }
 }
-
-
-
-
