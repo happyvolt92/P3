@@ -10,9 +10,15 @@ class Character {
             // weapon enum
             self.weapon = type.weapon()
             //life is now combinate with type
-            self.life = type.life()
+            self.life = type.maxLife()
             self.type = type
         }
+    
+        // function descripttion character
+        func description() -> String{
+            return (" \(self.name),\(self.life) on \(self.type.maxLife()),\(self.weapon.name) with \(self.weapon.damage) ")
+        }
+        
     
         // so nothing else can be choose, caseIterable for simplify choice
         enum CharacterType: String, CaseIterable{
@@ -22,7 +28,7 @@ class Character {
                 case dwarf = "Dwarf"
     
             // func to sync characters's life
-            func life() -> Int {
+            func maxLife() -> Int {
                 switch self {
                     case .warrior: return 600
                     case .mage: return 800
