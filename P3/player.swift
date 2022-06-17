@@ -8,7 +8,9 @@
 public class Player{
     var name: String
     //initiate the characters allCases
- var characterPlayersChooseArray: [Character] = []
+    var characterPlayersChooseArray: [Character] = []
+    
+    
     
     init(name:String){
     self.name = name
@@ -23,6 +25,7 @@ public class Player{
         }
     }
     
+   
     // ask Player wich action to do, if input is not equal to 1 or 2 wrn the player
     func askPlayerWichActionToDo() -> Int{
         var i : Int
@@ -41,15 +44,17 @@ public class Player{
         var i : Int
         repeat {
             print("\(self.name), Who will do the action ?")
-            i = input()
+           
             for i in 0...2 {
-                if self.characterPlayersChooseArray[i].life() > 0 {
-                    print("\(i+1). \(characterPlayersChooseArray[i].rawValue)")
+                
+                if self.characterPlayersChooseArray[i].life > 0 {
+                    print("\(i+1). \(characterPlayersChooseArray[i].description())")
                 }
             }
+            i = input()
             // Player's choice need to be between 1&3 only
             if i <= 3 && i >= 1 {
-                if self.characterPlayersChooseArray[i-1].life() <= 0 {
+                if self.characterPlayersChooseArray[i-1].life <= 0 {
                     print("Hm,Fighter dead. Ask someone else.")
                     i = 0
                 }
@@ -83,4 +88,14 @@ public class Player{
         } while i < 1 || i > 3
         return self.characterPlayersChooseArray[i-1]
         }
+    
+    func isAlive() -> Bool {
+        for character in self.characterPlayersChooseArray{
+            if character.life > 0{
+                return true
+            }
+        }
+        return false
     }
+    
+}
