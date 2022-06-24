@@ -30,7 +30,6 @@ public class Game {
             print(" \nok Fighters, let's go ! \n\n")
         }
     }
-
     
     //Int Convert for reading answers
     private func input() -> Int {
@@ -60,25 +59,38 @@ public class Game {
                 }
                 else {
                     var charactersPlayersChoice: Character = Character(name: "", type: Character.CharacterType.allCases[choice])
-                    
+                     
                     // put characters choice in an array
                     player.characterPlayersChooseArray.append(charactersPlayersChoice)
                     //i = i + 1   =   i += 1
                     i += 1
+                    askPlayersCharacterName()
                 }
            
             }while i < 3
         }
     }
     
-   
-    // listing characters using CaseIterable and enum. code cleaner and maintanable
-    func listingAllCharacters(){
-        for characterType in Character.CharacterType.allCases{
-            print( " \(characterType.rawValue)  \n")
+    // list all characters in the game with their number starting from 1, print their description
+    
+    private func listingAllCharacters() {
+        for (index, character) in Character.CharacterType.allCases.enumerated() {
+            print("\(index + 1) - \(character.rawValue)")
         }
     }
-    
+
+    // ask players to choose a name for each character chosed in characterPlayersChooseArray
+    private func askPlayersCharacterName() {
+        for player in playersArray {
+            for character in player.characterPlayersChooseArray {
+                print("\n\(player.name), what's your \(character.type.rawValue) name ?\n")
+                let name = readLine()
+                character.name = name!
+            }
+        }
+    }
+   
+
     // if a playerchooseArray life is equal to 0 then endgame is true
     public func enOfTheGame() -> Bool{
         // verifier dans une équipe si tout les characters.life = 0
@@ -109,7 +121,7 @@ public class Game {
         self.askPlayersName()
         self.TeamPlayerCreation()
     
-        print("\n\n\n LET'S FIGHT !\n\n")
+        print("\n\n LET'S FIGHT !\n\n")
         var i = 0
         // while loop to play the game
         repeat {
