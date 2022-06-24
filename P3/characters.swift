@@ -16,7 +16,7 @@ class Character {
     
         // function descripttion character
         func description() -> String{
-            return (" \(self.name),\(self.life) on \(self.type.maxLife()),\(self.weapon.name) with \(self.weapon.damage) ")
+            return (" \(self.name), has \(self.life) on \(self.type.maxLife()) HP, his weapon is \(self.weapon.name) with \(self.weapon.damage) damage ")
         }
         
     
@@ -50,7 +50,7 @@ class Character {
         // Fight
         func attack(character: Character){
             character.life = character.life - self.weapon.damage
-            print("\(self.name) damaged \(character.name)by \(self.weapon.damage) !")
+            print("\(self.name) damaged \(character.name)by \(self.weapon.damage) !\n")
             if character.life < 0 {
                 character.life = 0
             }
@@ -64,8 +64,6 @@ class Character {
             print("\(character.name) has now \(character.life) HP. \n")
         }
 
-          
-       
 }
 
  
