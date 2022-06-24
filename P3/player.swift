@@ -89,6 +89,7 @@ public class Player{
         return self.characterPlayersChooseArray[i-1]
         }
     
+    // function check life
     func isAlive() -> Bool {
         for character in self.characterPlayersChooseArray{
             if character.life > 0{

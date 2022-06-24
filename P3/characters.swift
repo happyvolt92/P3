@@ -45,16 +45,16 @@ class Character {
                     case .dwarf: return Hammer()
                 }
             }
-        }//end enum
+        }
         
         // Fight
         func attack(character: Character){
             character.life = character.life - self.weapon.damage
-            print("\(self.name) damaged \(character.name)by \(self.weapon.damage) !\n")
+            print("\(self.name) damaged \(character.name) by \(self.weapon.damage) !\n")
             if character.life < 0 {
                 character.life = 0
             }
-            print("\(character.name)has now \(character.life) HP\n")
+            print("\(character.name) has now \(character.life) HP\n")
         }
         
         // heal function

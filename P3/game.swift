@@ -54,39 +54,50 @@ public class Game {
                 choice = input()
                 
                 // choice need to be in the characterArray, warning in terminal
-                if (choice > Character.CharacterType.allCases.count) || (choice < 1) {
+                if (choice > Character.CharacterType.allCases.count) || (choice < 0) {
                     print("No time for this, don't be shy and choose !\n")
                 }
                 else {
-                    var charactersPlayersChoice: Character = Character(name: "", type: Character.CharacterType.allCases[choice])
-                     
-                    // put characters choice in an array
-                    player.characterPlayersChooseArray.append(charactersPlayersChoice)
-                    //i = i + 1   =   i += 1
-                    i += 1
-                    askPlayersCharacterName()
+                    // after player add a character, ask the player to name it
+                      print("\n\(player.name), what's your warrior name ?\n")
+                      let name = readLine()
+                    
+                    // verif name is unique and not null
+                        if let n = name {
+                            var isNameUnique: Bool = true
+                            for character in player.characterPlayersChooseArray {
+                                if n == character.name{
+                                    isNameUnique = false
+                                }
+                            }
+                            if isNameUnique {
+                                var charactersPlayersChoice: Character = Character(name: n, type: Character.CharacterType.allCases[choice])
+                                // put characters choice in an array
+                                player.characterPlayersChooseArray.append(charactersPlayersChoice)
+                                //i = i + 1   =   i += 1
+                                i += 1
+                                print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) !\n")
+                            }
+                            else {
+                                print("\n Named already or empty !, choose again \n")
+                            }
+                        }
+                    else {
+                        print("\n Name already or empty !\n")
+                    }
+                            
                 }
            
             }while i < 3
         }
     }
     
-    // list all characters in the game with their number starting from 1, print their description
-    
+    // list all characters in the game with their number starting from 0,then print character.description()
     private func listingAllCharacters() {
-        for (index, character) in Character.CharacterType.allCases.enumerated() {
-            print("\(index + 1) - \(character.rawValue)")
-        }
-    }
-
-    // ask players to choose a name for each character chosed in characterPlayersChooseArray
-    private func askPlayersCharacterName() {
-        for player in playersArray {
-            for character in player.characterPlayersChooseArray {
-                print("\n\(player.name), what's your \(character.type.rawValue) name ?\n")
-                let name = readLine()
-                character.name = name!
-            }
+        var i = 0
+        for character in Character.CharacterType.allCases {
+            print("\(i) - \(character.rawValue) has \(character.maxLife()) HP and have \(character.weapon().name) as a weapon with \(character.weapon().damage)")
+            i += 1
         }
     }
    
@@ -139,7 +150,7 @@ public class Game {
             self.Laps = self.Laps + 1
         } while !self.enOfTheGame()
         //enOfTheGame is true, call the isWinner function to get the name of the winner and show numbers of laps
-        print("\n\n\(self.isWinner()) is the winner !He/She won in \n\n\(self.Laps) laps \n")
+        print("\n\n\(self.isWinner()) is the winner ! He/She won in \n\n\(self.Laps) laps \n")
 
      }
 }
