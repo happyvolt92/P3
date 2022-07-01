@@ -14,20 +14,20 @@ public class Game {
     
     //Allow playrs to choos a name !! must be different 2 to 1
     public func askPlayersName() {
-        print("\nPlayer 1, what's your name ?\n")
+        print("\n\nPlayer 1, what's your name ?\n")
         let name1 = readLine()
         self.playersArray.append(Player(name: name1!))
         print("\nPlayer 2, what's your name ?\n")
         let name2 = readLine()
         self.playersArray.append(Player(name: name2!))
-        print("\n\n")
+        print("\n\n ")
         //create a func for name verif
         if name2 == name1 {
             print("Oup's name already taken !\n")
             askPlayersName()
         }
         else {
-            print(" \nok Fighters, let's go ! \n\n")
+            print(" \nok Fighters, let's go ! ⚔️⚔️ \n\n")
         }
     }
     
@@ -49,7 +49,7 @@ public class Game {
             var choice : Int
             
             repeat {
-                print("\nFunniest Part! Creation of your legendary cannon fodder hem .. Team.\n \(player.name), it's your turn ! Choose 3 fighters and their name\n\n")
+                print("\n🔊Funniest Part!🔊\n\nCreation of your legendary cannon fodder ahem... I mean your Team.\n⚜️\(player.name)⚜️, it's your turn! Choose 3 fighters and their name 📝. \n\n")
                 listingAllCharacters()
                 choice = input()
                 
@@ -76,14 +76,14 @@ public class Game {
                                 player.characterPlayersChooseArray.append(charactersPlayersChoice)
                                 //i = i + 1   =   i += 1
                                 i += 1
-                                print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) !\n")
+                                print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) ✅!\n")
                             }
                             else {
-                                print("\n Named already or empty !, choose again \n")
+                                print("\n Named already on game or empty !, choose again ❌.\n")
                             }
                         }
                     else {
-                        print("\n Name already or empty !\n")
+                        print("\n Name already on game or empty ❌!\n")
                     }
                             
                 }
@@ -96,7 +96,7 @@ public class Game {
     private func listingAllCharacters() {
         var i = 0
         for character in Character.CharacterType.allCases {
-            print("\(i) - \(character.rawValue) has \(character.maxLife()) HP and have \(character.weapon().name) as a weapon with \(character.weapon().damage)")
+            print("\(i) - \(character.rawValue) has \(character.maxLife()) Hp and come with \(character.weapon().name) as a weapon with \(character.weapon().damage) damage points.")
             i += 1
         }
     }
@@ -126,13 +126,13 @@ public class Game {
     // function to launch game within all steps (actions).
      func launchGame() {
          // Game explanation on start
-             print("Welcome to War is love!\nTwo players will fight for their life. Each player will create a team composed of 3 characters.\n Every player,warrior need a name! It's a turn by turn game, each player will choose a character to attack the other player's character. The winner is the last player with a character alive. \n Good luck!")
+             print("Welcome to War is love!❤️‍🩹 \n\nTwo players will fight for their life. Each player will create a team composed by 3 characters.\nEvery player, warrior need a name! Don't forget to name your warriors.\nIt's a turn by turn game, each player will choose a character to attack the other player's character or to heal his team.\nThe winner is the last player with a character alive.\nGood luck!🍀")
          
          
         self.askPlayersName()
         self.TeamPlayerCreation()
     
-        print("\n\n LET'S FIGHT !\n\n")
+        print("\n\n⚔️ LET'S FIGHT !⚔️\n\n")
         var i = 0
         // while loop to play the game
         repeat {
@@ -150,7 +150,7 @@ public class Game {
             self.Laps = self.Laps + 1
         } while !self.enOfTheGame()
         //enOfTheGame is true, call the isWinner function to get the name of the winner and show numbers of laps
-        print("\n\n\(self.isWinner()) is the winner ! He/She won in \n\n\(self.Laps) laps \n")
+        print("\n\n 🔉🔉 👑\(self.isWinner()) is the winner ! He/She won in \(self.Laps) laps 🔉🔉\n")
 
      }
 }

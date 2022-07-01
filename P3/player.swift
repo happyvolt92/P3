@@ -30,10 +30,10 @@ public class Player{
     func askPlayerWichActionToDo() -> Int{
         var i : Int
         repeat{
-            print("Fighter \(self.name), should you :\n\n 1.Fight  \n 2.Heal ?")
+            print("Fighter \(self.name)⚜️, should you :\n\n 1. Fight  \n 2. Heal")
             i = input()
             if i > 2 || i < 1{
-                print("\nYou can't escape your duty, please choose to Fight or Heal !")
+                print("\nYou can't escape your duty, please choose to Fight or to Heal !")
             }
         }while i > 2 || i < 1
         return i
@@ -43,7 +43,7 @@ public class Player{
     func askWichCharacterWillDoTheAction() -> Character {
         var i : Int
         repeat {
-            print("\n \(self.name), Who will do the action ?\n")
+            print("\n\(self.name), Who will do the action ?\n")
            
             for i in 0...2 {
                 
@@ -70,16 +70,16 @@ public class Player{
    func chooseTheTarget() -> Character {
         var i : Int
         repeat {
-            print("\nHow fun ! Choose the enemy !!\n")
+            print("\n Choose the target!!\n")
             for i in 0...2 {
                 if self.characterPlayersChooseArray[i].life > 0 {
-                    print("\(i+1).\(self.characterPlayersChooseArray[i].name)")
+                    print("\n\(i+1).\(self.characterPlayersChooseArray[i].name)")
                 }
             }
             i = input()
             if i <= 3 && i >= 1 {
                 if self.characterPlayersChooseArray[i-1].life <= 0 {
-                    print("\nHm,Fighter dead. Ask someone else.\n")
+                    print("\nHm,Fighter dead or not choice not available. Ask someone else.\n")
                     i = 0
                 }
             }else{
@@ -89,7 +89,7 @@ public class Player{
         return self.characterPlayersChooseArray[i-1]
         }
     
-    // function check life
+    // function check life 
     func isAlive() -> Bool {
         for character in self.characterPlayersChooseArray{
             if character.life > 0{

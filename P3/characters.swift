@@ -16,7 +16,7 @@ class Character {
     
         // function descripttion character
         func description() -> String{
-            return (" \(self.name), has \(self.life) on \(self.type.maxLife()) HP, his weapon is \(self.weapon.name) with \(self.weapon.damage) damage ")
+            return (" 🪖 \(self.name), has \(self.life) on \(self.type.maxLife()) Hp ❤️, his weapon is \(self.weapon.name) with \(self.weapon.damage) damage💢")
         }
         
     
@@ -50,18 +50,18 @@ class Character {
         // Fight
         func attack(character: Character){
             character.life = character.life - self.weapon.damage
-            print("\(self.name) damaged \(character.name) by \(self.weapon.damage) !\n")
+            print("\n💢💢\(self.name) damaged \(character.name) by \(self.weapon.damage)💢💢 Pts!")
             if character.life < 0 {
                 character.life = 0
             }
-            print("\(character.name) has now \(character.life) HP\n")
+            print("\(character.name) has now \(character.life) HP ❤️‍🩹 \n")
         }
         
         // heal function
         func heal(character : Character){
             character.life = character.life +  100
-            print("\(CharacterType.mage) trow a healing spell on \(character.name) and give him back 100 HP.")
-            print("\(character.name) has now \(character.life) HP. \n")
+            print("\(CharacterType.mage) trow a healing spell 🪬 on \(character.name) and gave back 100 Hp")
+            print("\(character.name) has now \(character.life) Hp❤️‍🩹 \n")
         }
 
 }

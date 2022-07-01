@@ -10,7 +10,7 @@ import Foundation
  class IronFist : Weapon {
     init() {
         super.init(damage: 60)
-        name = "Iron Fists"
+        name = "Iron Fists 🦾"
     }
     
     

@@ -10,6 +10,6 @@ import Foundation
 class Staff: Weapon {
     init() {
         super.init(damage: 40)
-        name = "Aurora"
+        name = "Aurora 🪬"
     }
 }
