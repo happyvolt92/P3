@@ -9,7 +9,7 @@ import Foundation
 
  class IronFist : Weapon {
     init() {
-        super.init(damage: 60)
+        super.init(damage: 60) // call the init of the parent class
         name = "Iron Fists 🦾"
     }
     

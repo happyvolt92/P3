@@ -9,7 +9,7 @@ import Foundation
 
 class Sword : Weapon {
     init() {
-        super.init(damage: 100)
+        super.init(damage: 100)// call the init of the parent class
         name = "Soldier sword ⚔️ "
     }
 }

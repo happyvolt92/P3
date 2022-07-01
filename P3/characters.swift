@@ -20,14 +20,14 @@ class Character {
         }
         
     
-        // so nothing else can be choose, caseIterable for simplify choice
+        // so nothing else can be choose, caseIterable for simplify choice.
         enum CharacterType: String, CaseIterable{
                 case warrior = "Warrior"
                 case mage = "Mage"
                 case colossus = "Colossus"
                 case dwarf = "Dwarf"
     
-            // func to sync characters's life
+            // func to sync characters's life and return the max life of the character.
             func maxLife() -> Int {
                 switch self {
                     case .warrior: return 600
@@ -36,7 +36,7 @@ class Character {
                     case .dwarf: return 400
                 }
             }
-            // same func above but for weapon
+            // func to sync characters's weapon and return the weapon of the character in a Weapon struct.
             func weapon() -> Weapon {
                 switch self {
                     case .warrior: return Sword()
@@ -47,12 +47,14 @@ class Character {
             }
         }
         
-        // Fight
+        // Fight func. When character is attacked, he lose life with the enemy's weapon damage. if the life is less than 0, he is dead and we print a message.
         func attack(character: Character){
             character.life = character.life - self.weapon.damage
             print("\n💢💢\(self.name) damaged \(character.name) by \(self.weapon.damage)💢💢 Pts!")
+            // if the character is dead, we print a message.
             if character.life < 0 {
                 character.life = 0
+                print("\n💀\(character.name) is dead 🪦")
             }
             print("\(character.name) has now \(character.life) HP ❤️‍🩹 \n")
         }

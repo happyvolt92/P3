@@ -12,9 +12,9 @@ import Foundation
    /// Function to launch the game
     func StartGame() {
        
-       let game = Game()
+       let game = Game() // create a new instance of Game
    
-       game.launchGame()
+       game.launchGame() // call the launchGame function
       
     }
 

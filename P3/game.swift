@@ -4,7 +4,7 @@
 //  Created by Elodie GAGE on 14/04/2022.
 //
 import Foundation
-
+// commenter tout le code pour expliquer le code
 
 public class Game {
     
@@ -12,7 +12,7 @@ public class Game {
     var playersArray : [Player] = [Player]()
     
     
-    //Allow playrs to choos a name !! must be different 2 to 1
+    // function public, asking both players to choose their name.Ended with a name verification.
     public func askPlayersName() {
         print("\n\nPlayer 1, what's your name ?\n")
         let name1 = readLine()
@@ -31,7 +31,7 @@ public class Game {
         }
     }
     
-    //Int Convert for reading answers
+    //Int Converter so we can translate the users answer to an Int and process it.
     private func input() -> Int {
         if let strData = readLine(),
            let intValue = Int(strData){
@@ -43,7 +43,7 @@ public class Game {
     
 
     public func TeamPlayerCreation() {
-        
+        // For all player in playersArray, ask them to choose their team.
         for player in playersArray {
             var i = 0
             var choice : Int
@@ -53,16 +53,16 @@ public class Game {
                 listingAllCharacters()
                 choice = input()
                 
-                // choice need to be in the characterArray, warning in terminal
+                // if the user choice is less than 0(Int) and not in the enum of all Cases, we ask him to choose again.
                 if (choice > Character.CharacterType.allCases.count) || (choice < 0) {
                     print("No time for this, don't be shy and choose !\n")
                 }
                 else {
-                    // after player add a character, ask the player to name it
+                    // after player's choice, ask the player to name his warrior.
                       print("\n\(player.name), what's your warrior name ?\n")
                       let name = readLine()
                     
-                    // verif name is unique and not null
+                    // in the characterPlayersChooseArray search for all character and check if the name is already taken with a boolean. 
                         if let n = name {
                             var isNameUnique: Bool = true
                             for character in player.characterPlayersChooseArray {
@@ -72,9 +72,9 @@ public class Game {
                             }
                             if isNameUnique {
                                 var charactersPlayersChoice: Character = Character(name: n, type: Character.CharacterType.allCases[choice])
-                                // put characters choice in an array
+                                // put characters choice in an array only when all the conditions are met.
                                 player.characterPlayersChooseArray.append(charactersPlayersChoice)
-                                //i = i + 1   =   i += 1
+                                // increment the counter for the next character, print the character's name and type.
                                 i += 1
                                 print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) ✅!\n")
                             }
@@ -88,11 +88,11 @@ public class Game {
                             
                 }
            
-            }while i < 3
+            }while i < 3 // while the counter is less than 3, we ask the player to choose again.
         }
     }
     
-    // list all characters in the game with their number starting from 0,then print character.description()
+    // function to list characters. For every character in the CharacterType Enum (cases), we print the name and the type. This func work with a counter.
     private func listingAllCharacters() {
         var i = 0
         for character in Character.CharacterType.allCases {
@@ -101,10 +101,9 @@ public class Game {
         }
     }
    
-
-    // if a playerchooseArray life is equal to 0 then endgame is true
+    // Public function to check if the game is over with a boolean.
     public func enOfTheGame() -> Bool{
-        // verifier dans une équipe si tout les characters.life = 0
+        // for player in the PlayersArray, if the player's life is different than the isAlive func return, we return true.
         for player in playersArray{
             if !player.isAlive(){
                 return true
@@ -113,7 +112,7 @@ public class Game {
             return false
     }
     
-    // check wich player is alive and return the name of the player
+    // for player in the PlayersArray, we check if the player is alive with the isAlive(). If he is, we print his name and his life so we can see who is the winner
     public func isWinner() -> String{
         for player in playersArray{
             if player.isAlive(){
@@ -134,9 +133,9 @@ public class Game {
     
         print("\n\n⚔️ LET'S FIGHT !⚔️\n\n")
         var i = 0
-        // while loop to play the game
+        // while the game is not over, we launch the game with this loop and for every turn, every player we use func to do actions.
         repeat {
-            let x = i%2
+            let x = i%2 // we use the modulo to know who is the player's turn.
             print("Don't sleep, it's your turn \(self.playersArray[x].name)\n")
             //every players need to choose an action, a character who will do the action and a target. Every things need to be in a row.
             if self.playersArray[x].askPlayerWichActionToDo() == 1 {
@@ -147,10 +146,10 @@ public class Game {
             }
             //laps increase so we can count them every turns
             i = i + 1
-            self.Laps = self.Laps + 1
+            self.Laps = self.Laps + 1 // we increment the laps counter every turn
         } while !self.enOfTheGame()
         //enOfTheGame is true, call the isWinner function to get the name of the winner and show numbers of laps
-        print("\n\n 🔉🔉 👑\(self.isWinner()) is the winner ! He/She won in \(self.Laps) laps 🔉🔉\n")
+        print("\n\n 🔉🔉 👑\(self.isWinner()) is the winner ! He/She won in \(self.Laps) laps 🔉🔉\n") 
 
      }
 }

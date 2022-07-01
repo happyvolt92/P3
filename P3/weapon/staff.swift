@@ -9,7 +9,7 @@ import Foundation
 
 class Staff: Weapon {
     init() {
-        super.init(damage: 40)
+        super.init(damage: 40) // call the init of the parent class
         name = "Aurora 🪬"
     }
 }

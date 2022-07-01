@@ -12,7 +12,7 @@ class Weapon {
     var damage = 0
     
     init(damage: Int) {
-            self.damage = damage
+            self.damage = damage // set the damage of the weapon
         }
     }
     
