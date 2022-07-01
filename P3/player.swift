@@ -26,14 +26,14 @@ public class Player{
     }
     
    
-    // ask the player to choose a character(using the input function) choose an action he will perform as a character.
+    // ask the player to choose (using the input function) an action he will perform as a character.
     func askPlayerWichActionToDo() -> Int{
         var i : Int
         repeat{
-            print("Fighter \(self.name)⚜️, should you :\n\n 1. Fight  \n 2. Heal")
+            print("Fighter \(self.name)⚜️, should you :\n\n 1. Fight  \n 2. Heal\n")
             i = input() 
             if i > 2 || i < 1{
-                print("\nYou can't escape your duty, please choose to Fight or to Heal !")
+                print("\nYou can't escape your duty, please choose to Fight or to Heal !\n")
             }
         }while i > 2 || i < 1 // if the user choice (input) is not equal to 1 or 2, we ask him to choose again.
         return i

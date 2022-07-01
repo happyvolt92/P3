@@ -96,7 +96,7 @@ public class Game {
     private func listingAllCharacters() {
         var i = 0
         for character in Character.CharacterType.allCases {
-            print("\(i) - \(character.rawValue) has \(character.maxLife()) Hp and come with \(character.weapon().name) as a weapon with \(character.weapon().damage) damage points.")
+            print("\(i) - \(character.rawValue) has \(character.maxLife()) Hp and come with \(character.weapon().name) as a weapon with \(character.weapon().damage) damage points.\n")
             i += 1
         }
     }
