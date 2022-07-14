@@ -16,7 +16,7 @@ class Character {
     
         // function descripttion character
         func description() -> String{
-            return (" 🪖 \(self.name), has \(self.life) on \(self.type.maxLife()) Hp ❤️, his weapon is \(self.weapon.name) with \(self.weapon.damage) damage💢")
+            return (" 🪖 .\(self.name), has \(self.life) on \(self.type.maxLife()) Hp ❤️, his weapon is \(self.weapon.name) with \(self.weapon.damage) damage💢")
         }
         
     

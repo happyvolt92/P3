@@ -8,7 +8,7 @@ import Foundation
 
 public class Game {
     
-    var Laps = 0
+    var laps = 0
     var playersArray : [Player] = [Player]()
     
     

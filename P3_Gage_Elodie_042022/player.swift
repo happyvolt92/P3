@@ -6,11 +6,8 @@
 //
 
 public class Player{
-    var name: String
-   
+    var name: String   
     var characterPlayersChooseArray: [Character] = [] // array of characters
-    
-    
     
     init(name:String){
     self.name = name
@@ -24,7 +21,6 @@ public class Player{
             return 0
         }
     }
-    
    
     // ask the player to choose (using the input function) an action he will perform as a character.
     func askPlayerWichActionToDo() -> Int{
