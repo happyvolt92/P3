@@ -67,13 +67,18 @@ class Character {
             }
         }
         
-        // heal function
-        func heal(character : Character){
-            character.life = character.life +  100
-            print("\(CharacterType.mage) trow a healing spell 🪬 on \(character.name) and gave back 100 Hp")
-            print("\(character.name) has now \(character.life) Hp❤️‍🩹 \n")
+        // heal function, character can't heal more than is max life.
+        func heal(character: Character){
+            if character.life < character.type.maxLife() {
+                character.life = character.life + self.weapon.damage
+                print("\n💢💢 \(self.name) healed \(character.name) by \(self.weapon.damage)💢💢 Pts!")
+                print("\(character.name) has now \(character.life) HP ❤️‍🩹 \n")
+            }
+            else {
+                print("\n you can't heal more than \(character.type.maxLife()) HP ❤️‍🩹 \n")
+            }
         }
-
+      
         
 }
 
