@@ -47,12 +47,24 @@ class Character {
             }
         }
       
+        // characterIsDead function. If the life is less than 0, he is dead and we print a message.
+      public func characterIsDead() -> Bool {
+            if self.life > 0 {
+                return true
+            }
+            else {
+                return false
+            }
+        }
 
         // Fight func. When character is attacked, he lose life with the enemy's weapon damage. if the life is less than 0, he is dead and we print a message.
         func attack(character: Character){
             character.life = character.life - self.weapon.damage
             print("\n💢💢 \(self.name) damaged \(character.name) by \(self.weapon.damage)💢💢 Pts!")
             print("\(character.name) has now \(character.life) HP ❤️‍🩹 \n")
+            if character.characterIsDead() == false {
+                print("\n💀 \(character.name) is dead 💀\n")
+            }
         }
         
         // heal function
@@ -62,6 +74,7 @@ class Character {
             print("\(character.name) has now \(character.life) Hp❤️‍🩹 \n")
         }
 
+        
 }
 
  
