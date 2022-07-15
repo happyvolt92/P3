@@ -46,7 +46,6 @@ class Character {
                 }
             }
         }
-        
       
 
         // Fight func. When character is attacked, he lose life with the enemy's weapon damage. if the life is less than 0, he is dead and we print a message.
