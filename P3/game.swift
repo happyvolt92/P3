@@ -10,10 +10,10 @@ public class Game {
     
     var laps = 0
     var playersArray : [Player] = [Player]()
-   
+    
     
     //func to verify if the name of player2 is the same as player1.
-    func verifyName(player1: Player, player2: Player) -> Bool {
+    func verifyPlayerName(player1: Player, player2: Player) -> Bool {
         if player1.name == player2.name {
             return true
         }
@@ -33,7 +33,7 @@ public class Game {
         self.playersArray.append(Player(name: name2))
        }
        //while the name of both players are the same we ask player2 to choose a new name.
-         while verifyName(player1: self.playersArray[0], player2: self.playersArray[1]) {
+         while verifyPlayerName(player1: self.playersArray[0], player2: self.playersArray[1]) {
               print("\n\nSorry player2,name taken, what's your name ?\n")
               if let name2 = readLine() {
                 self.playersArray[1].name = name2
@@ -51,64 +51,108 @@ public class Game {
             return 0
         }
     }
-    
 
-    public func TeamPlayerCreation() {
-        // For all player in playersArray, ask them to choose their team.
-        for player in playersArray {
-            var i = 0
-            var choice : Int
-            
-            repeat {
-                print("\n🔊Funniest Part!🔊\n\nCreation of your legendary cannon fodder ahem... I mean your Team.\n⚜️\(player.name)⚜️, it's your turn! Choose 3 fighters and their name 📝. \n\n")
-                listingAllCharacters()
-                choice = input()
-                
-                // if the user choice is less than 0(Int) and not in the enum of all Cases, we ask him to choose again.
-                if (choice > Character.CharacterType.allCases.count - 1) || (choice < 0) {
-                    print("\nNo time for this, don't be shy and choose !\n")
-                }
-                else {
-                    // after player's choice, ask the player to name his warrior.
-                      print("\n\(player.name), what's your warrior name ?\n")
-                      let name = readLine()
+    func explainTeamCreation(){
+        print("\n🔊Funniest Part!🔊\n\nCreation of your legendary cannon fodder ahem... I mean your Team.\n⚜️! Choose 3 fighters and their name 📝. \n\n")
+    }
+    
+    //func ask Players to choose the name of their fighters.
+    func askCharactersName(){
+            print("\n\nPlayer, choose your fighter name 📝.\n")
+    }
+
+
+    // function to ask the players to choose their 3 characters one by one
+    public func TeamPlayerCreation(){
+                for player in playersArray {
+                    var i = 0
+                    var choice : Int
                     
-                    // in the characterPlayersChooseArray search for all character and check if the name is already taken with a boolean. 
-                        if let n = name {
-                            var isNameUnique: Bool = true
-                            for character in player.characterPlayersChooseArray {
-                                if n == character.name{
-                                    isNameUnique = false
+                    repeat {
+                        listingAllCharacters()
+                        choice = input()
+                        if (choice > Character.CharacterType.allCases.count - 1) || (choice < 0) {
+                            print("\nNo time for this, don't be shy and choose !\n")
+                        }
+                        else {
+                            askCharactersName()
+                            let name = readLine()
+                            if let n = name {
+                                var isNameUnique: Bool = true
+                                for character in player.characterPlayersChooseArray {
+                                    if n == character.name{
+                                        isNameUnique = false
+                                    }
+                                }
+                                if isNameUnique {
+                                    let charactersPlayersChoice: Character = Character(name: n, type: Character.CharacterType.allCases[choice])
+                                    player.characterPlayersChooseArray.append(charactersPlayersChoice)
+                                    i += 1
+                                    print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) ✅!\n")
                                 }
                             }
-                            if isNameUnique {
-                                let charactersPlayersChoice: Character = Character(name: n, type: Character.CharacterType.allCases[choice])
-                                // put characters choice in an array only when all the conditions are met.
-                                player.characterPlayersChooseArray.append(charactersPlayersChoice)
-
-                                // increment the counter for the next character, print the character's name and type.
-                                i += 1
-                                print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) ✅!\n")
-                            }
-                            else {
-                                print("\n Named already on game or empty !, choose again ❌.\n")
-                            }
                         }
-                    else {
-                        print("\n Name already on game or empty ❌!\n")
-                    }
-                            
-                }
-           
-            }while i < 3 // while the counter is less than 3, we ask the player to choose again.
-        }
+                    }while i < 3 //
+                }//end for loop
     }
+
+
+    // public func TeamPlayerCreation() {
+    //     // For all player in playersArray, ask them to choose their team.
+    //     for player in playersArray {
+    //         var i = 0
+    //         var choice : Int
+            
+    //         repeat {
+    //             print("\n🔊Funniest Part!🔊\n\nCreation of your legendary cannon fodder ahem... I mean your Team.\n⚜️\(player.name)⚜️, it's your turn! Choose 3 fighters and their name 📝. \n\n")
+    //             listingAllCharacters()
+    //             choice = input()
+                
+    //             // if the user choice is less than 0(Int) and not in the enum of all Cases, we ask him to choose again.
+    //             if (choice > Character.CharacterType.allCases.count - 1) || (choice < 0) {
+    //                 print("\nNo time for this, don't be shy and choose !\n")
+    //             }
+    //             else {
+    //                 // after player's choice, ask the player to name his warrior.
+    //                   print("\n\(player.name), what's your warrior name ?\n")
+    //                   let name = readLine()
+                    
+    //                 // in the characterPlayersChooseArray search for all character and check if the name is already taken with a boolean. 
+    //                     if let n = name {
+    //                         var isNameUnique: Bool = true
+    //                         for character in player.characterPlayersChooseArray {
+    //                             if n == character.name{
+    //                                 isNameUnique = false
+    //                             }
+    //                         }
+    //                         if isNameUnique {
+    //                             let charactersPlayersChoice: Character = Character(name: n, type: Character.CharacterType.allCases[choice])
+    //                             // put characters choice in an array only when all the conditions are met.
+    //                             player.characterPlayersChooseArray.append(charactersPlayersChoice)
+
+    //                             // increment the counter for the next character, print the character's name and type.
+    //                             i += 1
+    //                             print("\n\(player.name), your \(charactersPlayersChoice.type) is named \(charactersPlayersChoice.name) ✅!\n")
+    //                         }
+    //                         else {
+    //                             print("\n Named already on game or empty !, choose again ❌.\n")
+    //                         }
+    //                     }
+    //                 else {
+    //                     print("\n Name already on game or empty ❌!\n")
+    //                 }
+                            
+    //             }
+           
+    //         }while i < 3 // while the counter is less than 3, we ask the player to choose again.
+    //     }
+    // }
 
     // function to list characters. For every character in the CharacterType Enum (cases), we print the name and the type. This func work with a counter.
    public func listingAllCharacters() {
         var i = 0
         for character in Character.CharacterType.allCases {
-            print("\(i) - \(character.rawValue) has \(character.maxLife()) Hp and come with \(character.weapon().name) as a weapon with \(character.weapon().damage) damage points.\n")
+            print("\n\(i) - \(character.rawValue) has \(character.maxLife()) Hp and come with \(character.weapon().name) as a weapon with \(character.weapon().damage) damage points.\n")
             i += 1
         }
     }
@@ -151,6 +195,7 @@ public class Game {
          
          
         self.askPlayersName()
+        self.explainTeamCreation()
         self.TeamPlayerCreation()
     
         print("\n\n⚔️ LET'S FIGHT !⚔️\n\n")
