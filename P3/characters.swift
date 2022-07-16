@@ -70,8 +70,8 @@ class Character {
         // heal function, character can't heal more than is max life.
         func heal(character: Character){
             if character.life < character.type.maxLife() {
-                character.life = character.life + self.weapon.damage
-                print("\n💢💢 \(self.name) healed \(character.name) by \(self.weapon.damage)💢💢 Pts!")
+                character.life = character.life + 100
+                print("\n \(self.name) trow a healing grenade and healed itself by 100 ❤️ Pts!")
                 print("\(character.name) has now \(character.life) HP ❤️‍🩹 \n")
             }
             else {
